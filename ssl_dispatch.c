@@ -15,8 +15,7 @@
 void		ssl_dispatch(t_env *e)
 {
 	if (e->cmd & MD5)
-		// ssl_dispatch_md5(e);
-		printf("Dispatch md5\n");
+		ssl_md5(e);
 	else if (e->cmd & SHA256)
 		// ssl_dispatch_sha256(e);
 		printf("Dispatch sha256\n");

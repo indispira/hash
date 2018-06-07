@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 # include "libft/libft.h"
 
 # define MD5		1
@@ -39,16 +40,23 @@
 typedef struct	s_env
 {
 	char					cmd;
-	int						flag;
+	unsigned int	flag;
 	const char		*infile;
-	const char		*outfile;
-	const char		*iv;
 	char					*data;
 	char					*out;
-	int						nb_blocks;
-	int						size_block;
-	int						length;
+	unsigned int	length;
 }								t_env;
+
+typedef struct s_md5
+{
+	char					b512[64];
+	unsigned int	a0;
+	unsigned int	b0;
+	unsigned int	c0;
+	unsigned int	d0;
+	unsigned int	m[16];
+	unsigned int	hash[16];
+}								t_md5;
 
 // ssl functions
 int							ssl_parse(int ac, char **av, t_env *e);
@@ -61,12 +69,14 @@ int							ssl_help(char *s);
 void						ssl_print_usage(t_env *e);
 void						ssl_memory_error(t_env *e, const char *fct);
 void						ssl_error_flags(const char *arg, char flag, t_env *e);
-void						ssl_error_length(t_env *e, int length);
 
 // free
 void						ssl_free_env(t_env *e);
 
 // inits
 void						ssl_init_env(t_env *e);
+
+// hash functions
+void						ssl_md5(t_env *e);
 
 #endif

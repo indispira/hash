@@ -17,11 +17,7 @@ void	ssl_init_env(t_env *e)
 	e->cmd = 0;
 	e->flag = 0;
 	e->infile = NULL;
-	e->outfile = NULL;
-	e->iv = NULL;
 	e->data = NULL;
 	e->out = NULL;
-	e->nb_blocks = 0;
-	e->size_block = 0;
-	e->length = 0;
+  e->length = 0;
 }

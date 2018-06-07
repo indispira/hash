@@ -14,7 +14,7 @@
 
 static void	ssl_check_flags(t_env *e, char c)
 {
-	int	flag;
+	unsigned int	flag;
 
 	flag = e->flag;
 	e->flag |= c == 'p' ? FLAG_P : 0;

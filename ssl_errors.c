@@ -22,13 +22,6 @@ void	ssl_memory_error(t_env *e, const char *fct)
 	exit(0);
 }
 
-int		ssl_ed(void)
-{
-	write(2, "Invalid combinaison of flags: ", 30);
-	write(2, "impossible to encode and decode in the same time.\n", 50);
-	return (0);
-}
-
 void	ssl_error_flags(const char *arg, char flag, t_env *e)
 {
 	printf("Enter to %s\n", __FUNCTION__);
@@ -52,13 +45,4 @@ int		ssl_help(char *s)
 	write(2, "Message Digest commands:\nmd5\nsha256\nwhirlpool\n\n", 47);
 	write(2, "Cipher commands:\n", 17);
 	return (0);
-}
-
-void	ssl_error_length(t_env *e, int length)
-{
-	ssl_free_env(e);
-	write(2, "Wrong length of input data, need a length modulo ", 49);
-	ft_putnbr_fd(length, 2); // Sure about length ? Not size block ?
-	write(2, "bits.\n", 6);
-	exit(0);
 }
