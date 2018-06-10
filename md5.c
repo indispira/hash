@@ -8,7 +8,7 @@
 int	main(void)
 {
 	// char			*str = "The quick brown fox jumps over the lazy dog";
-	char			*str = "The quick brown fox jumps over the lazy dog.";
+	char			*str = "pickle rick\n";
 	char			b512[64];
 	unsigned int	a0 = 1732584193;
 	unsigned int	b0 = 4023233417;
@@ -40,7 +40,7 @@ int	main(void)
 	// Set the 512 block
 	memset(b512, 0, 64);
 	memcpy(b512, str, strlen(str));
-	b512[strlen(str)] = 1 << 7;
+	b512[strlen(str)] = (unsigned int)1 << 7;
 	*(unsigned int*)(b512 + 56) = strlen(str) * 8 % UINT_MAX;
 	*(unsigned int*)(b512 + 60) = strlen(str) * 8 / UINT_MAX;
 	memset(result, 0, 16);
@@ -52,18 +52,18 @@ int	main(void)
 	// Divise the 512 block in 16 blocks of 32 bits
 	for (unsigned int i = 0; i < 16; i++)
 	{
-		printf("b512 %2hhx%2hhx%2hhx%2hhx  %2hhx%2hhx%2hhx%2hhx\n",
-			*(b512 + i * 4), *(b512 + i * 4 + 1),
-			*(b512 + i * 4 + 2), *(b512 + i * 4 + 3),
-			*(b512 + i * 4 + 3), *(b512 + i * 4 + 2),
-			*(b512 + i * 4 + 1), *(b512 + i * 4));
+		// printf("b512 %2hhx%2hhx%2hhx%2hhx  %2hhx%2hhx%2hhx%2hhx\n",
+		// 	*(b512 + i * 4), *(b512 + i * 4 + 1),
+		// 	*(b512 + i * 4 + 2), *(b512 + i * 4 + 3),
+		// 	*(b512 + i * 4 + 3), *(b512 + i * 4 + 2),
+		// 	*(b512 + i * 4 + 1), *(b512 + i * 4));
 		m[i] = 0;
 		m[i] |= *(b512 + i * 4) & 255;
 		m[i] |= *(b512 + i * 4 + 1) << 8 & 65280;
 		m[i] |= *(b512 + i * 4 + 2) << 16 & 16711680;
 		m[i] |= *(b512 + i * 4 + 3) << 24 & 4278190080;
 		// m[i] |= *(b512 + i * 4) + (*(b512 + i * 4 + 1) << 8) + (*(b512 + i * 4 + 2) << 16) + (*(b512 + i * 4 + 3) << 24);
-		printf("m[%u] %8x  %u\n\n", i, m[i], m[i]);
+		printf("m[%2u] %8x  %u\n", i, m[i], m[i]);
 		// memcpy(m[i], b512 + i * 4, 4);
 	}
 
@@ -125,12 +125,13 @@ int	main(void)
 
 	// Print the result
 	for (unsigned int i = 0; i < 16; i++)
-		printf("%2hhx", result[i]);
+		printf("%02hhx", result[i]);
 	printf("\n");
 
 	// Print the final result from wikipedia
-	write(1, "e4d909c290d0fb1ca068ffaddf22cbd0\n", 33);
-	write(1, "9e107d9d372bb6826bd81d3542a419d6\n", 33);
+	write(1, "\n\n", 2);
+	// write(1, "e4d909c290d0fb1ca068ffaddf22cbd0\n", 33);
+	// write(1, "9e107d9d372bb6826bd81d3542a419d6\n", 33);
 	return (0);
 }
 

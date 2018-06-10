@@ -12,13 +12,21 @@
 
 #include "h_ssl_des.h"
 
-void	ssl_memory_error(t_env *e, const char *fct)
+void	ssl_memory_error(t_env *e, void *stc, const char *fct)
 {
 	ft_putstr("Memory allocation in function ");
 	ft_putstr(fct);
 	ft_putendl(" has failed.");
 	if (e)
+	{
+		if (stc)
+		{
+			if (e->cmd == MD5)
+				ssl_free_md5((t_md5*)stc);
+			// others free for commands
+		}
 		ssl_free_env(e);
+	}
 	exit(0);
 }
 

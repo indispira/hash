@@ -5,6 +5,10 @@ make && make clean && clear && \
 ./ft_ssl && echo "" && ./ft_ssl foobar && echo "" && \
 \
 echo "" && echo "TESTS OF MD5 HASH:" && \
+echo "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890-=QWERTYUIOPASDFGHJKLZXCVBNM:" && \
+echo "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890-=QWERTYUIOPASDFGHJKLZXCVBNM" | openssl md5 && \
+echo "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890-=QWERTYUIOPASDFGHJKLZXCVBNM" | md5 && \
+echo "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890-=QWERTYUIOPASDFGHJKLZXCVBNM" | ./ft_ssl md5 && \
 echo "pickle rick:" && \
 echo "pickle rick" | openssl md5 && \
 echo "pickle rick" | md5 && \

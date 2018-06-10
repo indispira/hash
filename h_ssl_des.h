@@ -49,13 +49,18 @@ typedef struct	s_env
 
 typedef struct s_md5
 {
-	char					b512[64];
 	unsigned int	a0;
 	unsigned int	b0;
 	unsigned int	c0;
 	unsigned int	d0;
+	unsigned int 	a;
+	unsigned int 	b;
+	unsigned int 	c;
+	unsigned int 	d;
 	unsigned int	m[16];
-	unsigned int	hash[16];
+	char					hash[16];
+	unsigned int 	nb_blocks;
+	char					*blocks;
 }								t_md5;
 
 // ssl functions
@@ -67,11 +72,12 @@ void						ssl_output(t_env *e);
 // errors
 int							ssl_help(char *s);
 void						ssl_print_usage(t_env *e);
-void						ssl_memory_error(t_env *e, const char *fct);
+void						ssl_memory_error(t_env *e, void *stc, const char *fct);
 void						ssl_error_flags(const char *arg, char flag, t_env *e);
 
 // free
 void						ssl_free_env(t_env *e);
+void    				ssl_free_md5(t_md5 *md5);
 
 // inits
 void						ssl_init_env(t_env *e);

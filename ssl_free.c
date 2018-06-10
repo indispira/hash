@@ -19,3 +19,9 @@ void		ssl_free_env(t_env *e)
 	if (e->out)
 		ft_memdel((void**)&e->out);
 }
+
+void    ssl_free_md5(t_md5 *md5)
+{
+  if (md5->blocks)
+    ft_memdel((void**)&md5->blocks);
+}
