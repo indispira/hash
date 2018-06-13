@@ -9,27 +9,27 @@ echo "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890-=QWERTYUIOPASDFGHJKLZXCVBNM:" 
 echo "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890-=QWERTYUIOPASDFGHJKLZXCVBNM" | openssl md5 && \
 echo "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890-=QWERTYUIOPASDFGHJKLZXCVBNM" | md5 && \
 echo "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890-=QWERTYUIOPASDFGHJKLZXCVBNM" | ./ft_ssl md5 && \
-echo "pickle rick:" && \
+echo "" && echo "pickle rick:" && \
 echo "pickle rick" | openssl md5 && \
 echo "pickle rick" | md5 && \
-echo "pickle rick" | ./ft_ssl md5 && \
-# echo "Do not pity the dead, Harry.: -p" && \
-# echo "Do not pity the dead, Harry." && echo "2d95365bc44bf0a298e09a3ab7b34d2f" && \
-# echo "Do not pity the dead, Harry." | ./ft_ssl md5 -p && \
-# echo "Pity the living.: -q -r" && echo "e20c3b973f63482a778f3fd1869b7f25" && \
-# echo "Pity the living." | ./ft_ssl md5 -q -r && \
-# echo "And above all,: file" && echo "And above all," > file && \
-# echo "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" && \
-# ./ft_ssl md5 file && \
-# echo "And above all,: -r file" && echo ":53d53ea94217b259c11a5a2d104ec58a file" && \
-# ./ft_ssl md5 -r file && \
+echo "pickle rick" | ./ft_ssl md5 && echo "" && \
+echo "Do not pity the dead, Harry.: -p" && \
+echo "Do not pity the dead, Harry." && echo "2d95365bc44bf0a298e09a3ab7b34d2f" && \
+echo "Do not pity the dead, Harry." | ./ft_ssl md5 -p && echo "" && \
+echo "Pity the living.: -q -r" && echo "e20c3b973f63482a778f3fd1869b7f25" && \
+echo "Pity the living." | ./ft_ssl md5 -q -r && echo "" && \
+echo "And above all,: file" && echo "And above all," > file && \
+echo "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" && \
+./ft_ssl md5 file && echo "" && \
+echo "And above all,: -r file" && echo "53d53ea94217b259c11a5a2d104ec58a file" && \
+./ft_ssl md5 -r file && echo "" && \
 # echo "pity those that aren't following baerista on spotify.: -s ..." && \
 # echo "MD5 (\"pity those that aren't following baerista on spotify.\") = a3c990a1964705d9bf0e602f44572f5f" && \
 # ./ft_ssl md5 -s "pity those that aren't following baerista on spotify." && \
-# echo "be sure to handle edge cases carefully: -p file" && \
-# echo "be sure to handle edge cases carefully" && echo "3553dc7dc5963b583c056d1b9fa3349c" && \
-# echo "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" && \
-# echo "be sure to handle edge cases carefully" | ./ft_ssl md5 -p file && \
+echo "be sure to handle edge cases carefully: -p file" && \
+echo "be sure to handle edge cases carefully" && echo "3553dc7dc5963b583c056d1b9fa3349c" && \
+echo "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" && \
+echo "be sure to handle edge cases carefully" | ./ft_ssl md5 -p file && \
 # echo "some of this will not make sense at first: file" && \
 # echo "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" && \
 # echo "some of this will not make sense at first" | ./ft_ssl md5 file

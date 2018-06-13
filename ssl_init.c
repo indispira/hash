@@ -20,4 +20,5 @@ void	ssl_init_env(t_env *e)
 	e->data = NULL;
 	e->out = NULL;
   e->length = 0;
+  e->size_hash = 0;
 }

@@ -34,7 +34,7 @@ static int	ssl_args_parser(int ac, char **av, t_env *e)
 	while (++i < ac)
 	{
 		arg = av[i];
-		if (*arg == '-')
+		if (!e->infile && *arg == '-')
 			while (*(++arg))
 				ssl_check_flags(e, *arg);
 		else

@@ -45,6 +45,7 @@ typedef struct	s_env
 	char					*data;
 	char					*out;
 	unsigned int	length;
+	unsigned int  size_hash;
 }								t_env;
 
 typedef struct s_md5

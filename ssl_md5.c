@@ -54,6 +54,7 @@ static void md5_init(t_env *e, t_md5 *md5)
     *(unsigned int*)(md5->blocks + length * 64 - 8) = e->length * 8 % UINT_MAX;
     *(unsigned int*)(md5->blocks + length * 64 - 4) = e->length * 8 / UINT_MAX;
     md5->nb_blocks = length;
+    e->size_hash = 32;
 }
 
 static void md5_16_iteration(t_md5 *md5, unsigned int *f, unsigned int *g,
@@ -97,7 +98,6 @@ static void md5_hash_loop(t_md5 *md5)
     md5->c = md5->b;
     md5->b = md5->b + (f << g_s[i]);
     md5->b = md5->b + (f >> (32 - g_s[i]));
-    // printf("[%2u] %10u %10u %10u %10u\n", i, md5->a, md5->b, md5->c, md5->d);
     i++;
   }
 }
@@ -114,7 +114,6 @@ static void md5_loop_on_block(t_md5 *md5, char *block)
         md5->m[i] |= *(block + i * 4 + 1) << 8 & 65280;
         md5->m[i] |= *(block + i * 4 + 2) << 16 & 16711680;
         md5->m[i] |= *(block + i * 4 + 3) << 24 & 4278190080;
-        // printf("m[%2u] %8x  %u\n", i, md5->m[i], md5->m[i]);
         i++;
     }
     md5->a = md5->a0;
@@ -140,16 +139,11 @@ void        ssl_md5(t_env *e)
       md5_loop_on_block(&md5, md5.blocks + i * 64);
       i++;
     }
-    // printf("A %8x\n", md5.a0);
-    // printf("B %8x\n", md5.b0);
-    // printf("C %8x\n", md5.c0);
-    // printf("D %8x\n", md5.d0);
     memcpy(md5.hash, &md5.a0, 4);
     memcpy(md5.hash + 4, &md5.b0, 4);
     memcpy(md5.hash + 8, &md5.c0, 4);
     memcpy(md5.hash + 12, &md5.d0, 4);
-    for (i = 0; i < 16; i++)
-      printf("%02hhx", md5.hash[i]);
-    printf("\n");
+    if (!(e->out = ft_strdup(md5.hash)))
+      ssl_memory_error(e, (void*)&md5, __FUNCTION__);
     ssl_free_md5(&md5);
 }
